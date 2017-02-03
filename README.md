@@ -12,4 +12,8 @@ Skeleton of Citizens Loader module
 Herminio García González (@herminiogg)
 Jose Emilio Labra Gayo (@labra)
 Ignacio Martín Franco (@NachoMartin123)
+<<<<<<< HEAD
 Daniel Orviz Suarez (@danielorviz)
+=======
+Hugo Pérez Martínez (@hugoPerezMartinez)
+>>>>>>> 104c1470c038d45db913436b826a78892e55b694
