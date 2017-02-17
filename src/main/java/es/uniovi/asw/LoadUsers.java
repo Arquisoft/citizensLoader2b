@@ -26,8 +26,6 @@ public class LoadUsers {
 		}
 	}
 
-	// TODO
-	@SuppressWarnings("deprecation")
 	void run(String... args) throws Exception {
 		File myFile = new File("test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
