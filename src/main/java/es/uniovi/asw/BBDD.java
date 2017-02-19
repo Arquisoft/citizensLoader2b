@@ -3,6 +3,7 @@ package es.uniovi.asw;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -76,6 +77,7 @@ public class BBDD {
 			PreparedStatement ps = con.prepareStatement(sb.toString());
 			ps.setString(1, dni);
 			ps.execute();
+			ps.close();
 			con.close();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -94,7 +96,7 @@ public class BBDD {
 		Connection con = crearConexion();
 		try {
 			StringBuilder sb = new StringBuilder();
-			sb.append("UPDATE CIUDADANO " + "set nombre= ?, apellidos= ?, email= ?, fecha_nacimiento= ?, direccion= ?, nacionalidad= ?, dni= ? "
+			sb.append("UPDATE CIUDADANO " + "set nombre= ?, apellidos= ?, email= ?, fecha_nacimiento= ?, direccion= ?, nacionalidad= ?"
 					+ "where dni=?");
 			PreparedStatement ps = con.prepareStatement(sb.toString());
 			ps.setString(1, ciudadano.getNombre());
@@ -104,10 +106,38 @@ public class BBDD {
 			ps.setString(5, ciudadano.getDireccion());
 			ps.setString(6, ciudadano.getNacionalidad());
 			ps.setString(7, ciudadano.getDni());
-			ps.execute();
+			ps.executeUpdate();
+			ps.close();
+			con.close();
 		} catch (SQLException e) {
 			System.err.println("no existe el ciudadano especificado");
+			e.printStackTrace();
 		}
+	}
+	
+	public static Ciudadano obtenerCiudadano(String dni){
+		Connection con = crearConexion();
+		String consulta = "SELECT c.* FROM ciudadano c WHERE c.dni = ?";
+		Ciudadano ciudadano = null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(consulta);
+			ps.setString(1, dni);
+			rs = ps.executeQuery();
+			while(rs.next()){
+			ciudadano = new Ciudadano(rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"),
+					rs.getString("direccion"), rs.getString("nacionalidad"), rs.getString("dni"), rs.getDate("fecha_nacimiento"));
+			}
+			rs.close();
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return ciudadano;
 	}
 
 	
