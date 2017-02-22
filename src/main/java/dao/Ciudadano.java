@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Ciudadano {
 
-	private String nombre, apellidos, email, direccion, nacionalidad, dni;
+	private String nombre, apellidos, email, direccion, nacionalidad, dni, password;
 	private Date fecha_nacimiento;
 	
 	/*
@@ -69,6 +69,12 @@ public class Ciudadano {
 	}
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
