@@ -2,12 +2,17 @@ package es.uniovi.asw;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.sql.Date;
+//import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import dao.Ciudadano;
 
 /**
  * Main application
@@ -17,46 +22,46 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class LoadUsers {
 
-	public static void main(String... args) {
-		final LoadUsers runner = new LoadUsers();
+	public static List<Ciudadano> pruebaUsuarios(String ruta) {
+		List<Ciudadano> participants = new ArrayList<Ciudadano>();
 		try {
-			runner.run(args);
-		} catch (Exception e) {
-			System.err.println("Fallo");
-		}
-	}
+			FileInputStream file = new FileInputStream(new File(ruta));
+			XSSFWorkbook workbook = new XSSFWorkbook(file);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 
-	void run(String... args) throws Exception {
-		File myFile = new File("test.xlsx");
-		FileInputStream fis = new FileInputStream(myFile);
-		// Finds the workbook instance for XLSX file
-		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
-		// Return first sheet from the XLSX workbook
-		XSSFSheet mySheet = myWorkBook.getSheetAt(0);
-		// Get iterator to all the rows in current sheet
-		Iterator<Row> rowIterator = mySheet.iterator();
-		// Traversing over each row of XLSX file
-		while (rowIterator.hasNext()) {
-			Row row = rowIterator.next();
-			// For each row, iterate through each columns
-			Iterator<Cell> cellIterator = row.cellIterator();
-			while (cellIterator.hasNext()) {
-				Cell cell = cellIterator.next();
-				switch (cell.getCellType()) {
-				case Cell.CELL_TYPE_STRING:
-					System.out.print(cell.getStringCellValue() + " - ");
-					break;
-				case Cell.CELL_TYPE_NUMERIC:
-					System.out.print(cell.getNumericCellValue() + " - ");
-					break;
-				case Cell.CELL_TYPE_BOOLEAN:
-					System.out.print(cell.getBooleanCellValue() + " - ");
-					break;
-				default:
+			Iterator<Row> rowIterator = sheet.iterator();
+			while (rowIterator.hasNext()) {
+				Row row = rowIterator.next();
+
+				ArrayList<Object> aux = new ArrayList<Object>();
+				for (int i = 0; i < 3; i++) {
+					aux.add(row.getCell(i) != null ? row.getCell(i).toString() : null);
 				}
+				for (int i = 4; i < 7; i++) {
+					aux.add(row.getCell(i) != null ? row.getCell(i).toString() : null);
+				}
+
+//				String fecha = row.getCell(3) != null ? row.getCell(3).toString() : null;
+
+				Date nacimiento = null;
+//				if (fecha != null && !fecha.equals("Fecha nacimiento")) {
+//					SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+//					nacimiento = (Date) sdf.parse(fecha);
+//				}
+				aux.add(nacimiento);
+
+				Ciudadano ciudadano = new Ciudadano(aux.get(0).toString(), aux.get(1).toString(), aux.get(2).toString(),
+						aux.get(3).toString(), aux.get(4).toString(), aux.get(5).toString(), (Date)aux.get(6));
+
+				participants.add(ciudadano);
 			}
-			System.out.println("");
+
+			file.close();
+			workbook.close();
+		} catch (Exception e) {
+			System.err.println("Error al leer del excel");
+			e.printStackTrace();
 		}
-		myWorkBook.close();
+		return participants;
 	}
 }
