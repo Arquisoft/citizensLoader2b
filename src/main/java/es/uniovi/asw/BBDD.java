@@ -24,7 +24,7 @@ public class BBDD {
 		Connection conexion = null;
 		try {
 			DriverManager.registerDriver(new JDBCDriver());
-			String url ="jdbc:hsqldb:file:basedatos";
+			String url ="jdbc:hsqldb:file:test";
 			//String url = "jdbc:hsqldb:hsql://localhost/";
 			String user = "SA";
 			String pass = "";
