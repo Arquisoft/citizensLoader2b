@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.hsqldb.jdbc.JDBCDriver;
+
 import dao.Ciudadano;
 
 
@@ -21,7 +23,7 @@ public class BBDD {
 	public static Connection crearConexion() {
 		Connection conexion = null;
 		try {
-			DriverManager.registerDriver(new org.hsqldb.jdbc.JDBCDriver());
+			DriverManager.registerDriver(new JDBCDriver());
 			String url = "jdbc:hsqldb:hsql://localhost/";
 			String user = "SA";
 			String pass = "";
