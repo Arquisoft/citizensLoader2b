@@ -142,7 +142,26 @@ public class BBDD {
 		return ciudadano;
 	}
 
-	
+	/**
+	 * Metodo que guarda en la base de datos la contraseña asociada al usuario que se identifica con el dni
+	 */
+	public static void guardaarPasswordUsuario(String dni, String password) {
+		Connection con = crearConexion();
+		String consulta = "update Ciudadano set password = ? where dni = ?";
+		PreparedStatement ps=null;
+		try {
+			ps = con.prepareStatement(consulta);
+			ps.setString(1, password);
+			ps.setString(2, dni);
+			ps.executeUpdate();
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+	}
 	
 	
 
