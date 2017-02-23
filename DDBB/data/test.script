@@ -45,5 +45,5 @@ SET SCHEMA SYSTEM_LOBS
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
 INSERT INTO CIUDADANO VALUES('Ana','Torres Pardo','ana@example.com','1960-01-01','Av. De la Constituci\u00f3n 8','Espa\u00f1ol','09940449X',NULL)
-INSERT INTO CIUDADANO VALUES('Luis','L\u00f3pez Fernando','luis@example.com','1970-03-02','C/ Real Oviedo 2','Espa\u00f1ol','19160962F',NULL)
-INSERT INTO CIUDADANO VALUES('Juan','Torres Pardo','juan@example.com','1985-10-10','C/ Federico Garc\u00eda Lorca 2','Espa\u00f1ol','90500084Y',NULL)
+INSERT INTO CIUDADANO VALUES('Luis','L\u00f3pez Fernando','luis@example.com','1970-01-02','C/ Real Oviedo 2','Espa\u00f1ol','19160962F',NULL)
+INSERT INTO CIUDADANO VALUES('Juan','Torres Pardo','juan@example.com','1985-01-10','C/ Federico Garc\u00eda Lorca 2','Espa\u00f1ol','90500084Y',NULL)

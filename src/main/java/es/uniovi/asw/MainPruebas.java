@@ -41,7 +41,11 @@ public class MainPruebas {
 		for (Ciudadano ciudadano : ciudadanos) {
 			System.out.println("imprimiendo desde el main " + ciudadano);
 		}
-
+		
+		BBDD.eliminarCiudadanos();
+		BBDD.insertarCiudadano(ciudadanos);
+		Ciudadano otro = BBDD.obtenerCiudadano(ciudadanos.get(0).getDni());
+		System.out.println(otro);
 	}
 
 }
