@@ -2,8 +2,8 @@ package es.uniovi.asw;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.sql.Date;
-//import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +22,7 @@ import dao.Ciudadano;
  */
 public class LoadUsers {
 
-	@SuppressWarnings("deprecation")
+//	@SuppressWarnings("deprecation")
 	public static List<Ciudadano> pruebaUsuarios(String ruta) {
 		List<Ciudadano> participants = new ArrayList<Ciudadano>();
 		try {
@@ -31,7 +31,7 @@ public class LoadUsers {
 			XSSFSheet sheet = workbook.getSheetAt(0);
 
 			Iterator<Row> rowIterator = sheet.iterator();
-			rowIterator.next();
+//			rowIterator.next();
 			while (rowIterator.hasNext()) {
 				Row row = rowIterator.next();
 
@@ -43,23 +43,23 @@ public class LoadUsers {
 //					aux.add(row.getCell(i) != null ? row.getCell(i).toString() : null);
 //				}
 
-//				String fecha = row.getCell(3) != null ? row.getCell(3).toString() : null;
-
+				String nombre = row.getCell(0) != null ? row.getCell(0).toString() : null;
+				if(nombre != null && nombre.equals("Nombre"))
+					continue;
+				String fecha = row.getCell(3) != null ? row.getCell(3).toString() : null;
 				
-				String fecha = String.valueOf(aux.get(3));
-				String mesS = fecha.split("-")[1];
+//				String fecha = String.valueOf(aux.get(3));
+//				String mesS = fecha.split("-")[1];
+//				
+//				int mes = sacarMes(mesS);
+//				int dia = Integer.parseInt(fecha.split("-")[0]);
+//				
+//				
+//				int year = Integer.parseInt(fecha.split("-")[2]);
+//				Date nacimiento = new Date(year-1900, mes-1, dia) ;
 				
-				int mes = sacarMes(mesS);
-				int dia = Integer.parseInt(fecha.split("-")[0]);
-				
-				
-				int year = Integer.parseInt(fecha.split("-")[2]);
-				Date nacimiento = new Date(year-1900, mes-1, dia) ;
-				
-//				if (fecha != null && !fecha.equals("Fecha nacimiento")) {
-//					SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-//					nacimiento = (Date) sdf.parse(fecha);
-//				}
+				Date date = new SimpleDateFormat("dd-MMM-yyyy").parse(fecha);
+			    java.sql.Date nacimiento = new java.sql.Date(date.getTime());
 
 				Ciudadano ciudadano = new Ciudadano(aux.get(0).toString(), aux.get(1).toString(), aux.get(2).toString(),
 						aux.get(4).toString(), aux.get(5).toString(), aux.get(6).toString(), nacimiento);
@@ -76,45 +76,45 @@ public class LoadUsers {
 		return participants;
 	}
 
-	private static int sacarMes(String mesS) {
-		int mes = 0;
-		
-		if(mesS.equals("ene")){
-			mes=1;
-		}
-		if(mesS.equals("feb")){
-			mes=2;
-		}
-		if(mesS.equals("mar")){
-			mes=3;
-		}
-		if(mesS.equals("abr")){
-			mes=4;
-		}
-		if(mesS.equals("may")){
-			mes=5;
-		}
-		if(mesS.equals("jun")){
-			mes=6;
-		}
-		if(mesS.equals("jul")){
-			mes=7;
-		}
-		if(mesS.equals("ago")){
-			mes=8;
-		}
-		if(mesS.equals("sep")){
-			mes=9;
-		}
-		if(mesS.equals("oct")){
-			mes=10;
-		}
-		if(mesS.equals("nov")){
-			mes=11;
-		}
-		if(mesS.equals("dic")){
-			mes=12;
-		}
+//	private static int sacarMes(String mesS) {
+//		int mes = 0;
+//		
+//		if(mesS.equals("ene")){
+//			mes=1;
+//		}
+//		if(mesS.equals("feb")){
+//			mes=2;
+//		}
+//		if(mesS.equals("mar")){
+//			mes=3;
+//		}
+//		if(mesS.equals("abr")){
+//			mes=4;
+//		}
+//		if(mesS.equals("may")){
+//			mes=5;
+//		}
+//		if(mesS.equals("jun")){
+//			mes=6;
+//		}
+//		if(mesS.equals("jul")){
+//			mes=7;
+//		}
+//		if(mesS.equals("ago")){
+//			mes=8;
+//		}
+//		if(mesS.equals("sep")){
+//			mes=9;
+//		}
+//		if(mesS.equals("oct")){
+//			mes=10;
+//		}
+//		if(mesS.equals("nov")){
+//			mes=11;
+//		}
+//		if(mesS.equals("dic")){
+//			mes=12;
+//		}
 //		
 //		switch(mesS){
 //			case "ene":
@@ -166,6 +166,6 @@ public class LoadUsers {
 //				break;
 //			
 //		}
-		return mes;
-	}
+//		return mes;
+//	}
 }
