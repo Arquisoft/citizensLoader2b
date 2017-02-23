@@ -138,6 +138,7 @@ public class BBDD {
 				ciudadano = new Ciudadano(rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"),
 						rs.getString("direccion"), rs.getString("nacionalidad"), rs.getString("dni"),
 						rs.getDate("fecha_nacimiento"));
+				ciudadano.setPassword(rs.getString("password"));
 			}
 			rs.close();
 			ps.close();

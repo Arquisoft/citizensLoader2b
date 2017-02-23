@@ -177,7 +177,6 @@ public class AplicationTest {
 			}
 			reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		fichero.delete();
@@ -197,7 +196,42 @@ public class AplicationTest {
 		for (int i = 0; i < cvs.size(); i++) {
 			assertTrue((xlsx.get(i)).equals(cvs.get(i)));
 		}
-
 	}
 
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testEliminarCiudadano() {
+		List<Ciudadano> ciudadanos = new ArrayList<Ciudadano>();
+		
+		Ciudadano ciudadano = new Ciudadano("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "123456789A", new Date(18, 7, 1995));
+		
+		ciudadanos.add(ciudadano);
+		BBDD.insertarCiudadano(ciudadanos);
+		Ciudadano cBBDD = BBDD.obtenerCiudadano("123456789A");
+		assertNotNull(cBBDD);
+		
+		BBDD.eliminarCiudadano("123456789A");
+		
+		cBBDD = BBDD.obtenerCiudadano("123456789A");
+		assertNull(cBBDD);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testCrearPassword() {
+		List<Ciudadano> ciudadanos = new ArrayList<Ciudadano>();
+		
+		Ciudadano ciudadano = new Ciudadano("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A", new Date(18, 7, 1995));
+		
+		ciudadanos.add(ciudadano);
+		BBDD.insertarCiudadano(ciudadanos);
+		Ciudadano cBBDD = BBDD.obtenerCiudadano("1234A");
+		cBBDD.crearPassword();
+		String password = cBBDD.getPassword();
+		BBDD.guardaarPasswordUsuario("1234A", password);
+		cBBDD = BBDD.obtenerCiudadano("1234A");
+		
+		assertEquals(password, cBBDD.getPassword());
+	}
+	
 }
