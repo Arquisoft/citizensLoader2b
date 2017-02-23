@@ -11,10 +11,8 @@ import org.hsqldb.jdbc.JDBCDriver;
 
 import dao.Ciudadano;
 
-
 public class BBDD {
 	
-
 	/**
 	 * Metodo que establece conexión con la base de datos local
 	 * @return objeto conexion
@@ -35,7 +33,6 @@ public class BBDD {
 			return conexion;
 		}
 	}
-	
 	
 	/**
 	 * Añade ciudadanos a la base de datos
@@ -65,7 +62,6 @@ public class BBDD {
 			e.printStackTrace();
 		}
 	}
-
 	
 	/**
 	 * Elimina 1 ciudadano cuyo dni se introduce como parametro
@@ -136,9 +132,7 @@ public class BBDD {
 			ps.close();
 			con.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
 		return ciudadano;
 	}
@@ -158,12 +152,8 @@ public class BBDD {
 			ps.close();
 			con.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
 	}
-	
-	
 
 }

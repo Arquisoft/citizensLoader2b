@@ -10,7 +10,6 @@ public class MainPruebas {
 
 	//@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 //
 //		Ciudadano a = new Ciudadano("Nacho", "Martin Franco", "miemail@gmail.com", "12312312A", 
 //				"Calle Uria Oviedo", "Senegal", new Date(6, 2, 1995));
@@ -25,7 +24,6 @@ public class MainPruebas {
 		
 		AddUsuario cargarUsuarios= new AddUsuario();
 		cargarUsuarios.execute();
-		
 	}
 
 }
