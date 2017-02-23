@@ -218,6 +218,23 @@ public class AplicationTest {
 	
 	@SuppressWarnings("deprecation")
 	@Test
+	public void testEliminarTodosCiudadanos() {
+		List<Ciudadano> ciudadanos = new ArrayList<Ciudadano>();
+		Ciudadano ciudadano = new Ciudadano("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "123456789A", new Date(18, 7, 1995));
+		
+		ciudadanos.add(ciudadano);
+		BBDD.insertarCiudadano(ciudadanos);
+		Ciudadano cBBDD = BBDD.obtenerCiudadano("123456789A");
+		assertNotNull(cBBDD);
+		
+		BBDD.eliminarCiudadanos();
+		
+		cBBDD = BBDD.obtenerCiudadano("123456789A");
+		assertNull(cBBDD);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
 	public void testCrearPassword() {
 		List<Ciudadano> ciudadanos = new ArrayList<Ciudadano>();
 		
