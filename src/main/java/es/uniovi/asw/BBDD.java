@@ -43,8 +43,8 @@ public class BBDD {
 		try {
 			StringBuilder sb = new StringBuilder();
 			sb.append("insert into CIUDADANO ");
-			sb.append("(nombre, apellidos, email, direccion, nacionalidad, dni, fecha_nacimiento) ");
-			sb.append("values (?,?,?,?,?,?,?)");
+			sb.append("(nombre, apellidos, email, direccion, nacionalidad, dni, fecha_nacimiento, password) ");
+			sb.append("values (?,?,?,?,?,?,?,?)");
 			PreparedStatement ps = con.prepareStatement(sb.toString());
 			for(Ciudadano ciu: ciudadanos){
 				ps.setString(1, ciu.getNombre());
@@ -54,6 +54,7 @@ public class BBDD {
 				ps.setString(5, ciu.getNacionalidad());
 				ps.setString(6, ciu.getDni());
 				ps.setDate(7, ciu.getFecha_nacimiento());
+				ps.setString(8, ciu.getPassword());
 				ps.execute();
 			}
 			con.close();
