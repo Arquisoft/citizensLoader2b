@@ -1,5 +1,10 @@
 package es.uniovi.asw;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import dao.Ciudadano;
+
 //import java.sql.Date;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -9,9 +14,7 @@ package es.uniovi.asw;
 public class MainPruebas {
 
 	//@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//
+	public static void main(String[] args) {//
 //		Ciudadano a = new Ciudadano("Nacho", "Martin Franco", "miemail@gmail.com", "12312312A", 
 //				"Calle Uria Oviedo", "Senegal", new Date(6, 2, 1995));
 //		Ciudadano b = new Ciudadano("Pepe", "pepin pepon", "pepesemail@gmail.com", "12312312B", 
@@ -26,6 +29,16 @@ public class MainPruebas {
 		AddUsuario cargarUsuarios= new AddUsuario();
 		cargarUsuarios.execute();
 		
+		System.out.print("Inserte ruta:");
+		Scanner scanner = new Scanner(System.in);
+		String ruta = scanner.nextLine();
+		ruta = ruta.replace("\"", "");
+		scanner.close();
+		ArrayList<Ciudadano> ciudadanos = new ArrayList<Ciudadano>();
+		Leer.Ciudadanos(ciudadanos, ruta);
+		for (Ciudadano ciudadano : ciudadanos) {
+			System.out.println("imprimiendo desde el main "+ciudadano);
+		}
 	}
 
 }

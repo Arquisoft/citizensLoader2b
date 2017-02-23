@@ -12,7 +12,7 @@ public class Leer {
 		extension = extension.toLowerCase();
 		extension = Character.toUpperCase(extension.charAt(0)) + extension.substring(1);
 		try {
-			Class<?> cl = Class.forName("prueba."+extension);
+			Class<?> cl = Class.forName("es.uniovi.asw."+extension);
 			Constructor<?> con = cl.getConstructor();
 			Formatos xyz = (Formatos) con.newInstance();
 			ciudadanos = xyz.leerCiudadanos(ciudadanos, ruta);
