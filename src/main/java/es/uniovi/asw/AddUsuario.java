@@ -15,6 +15,8 @@ public class AddUsuario {
 			Ciudadano c = BBDD.obtenerCiudadano(ciudadano.getDni());
 			if(c == null){
 				ciudadanosBaseDatos.add(ciudadano);
+				ciudadano.crearPassword();
+				CrearCorreo.mandarCorreo(ciudadano);
 			}
 		}
 		BBDD.insertarCiudadano(ciudadanosBaseDatos);
