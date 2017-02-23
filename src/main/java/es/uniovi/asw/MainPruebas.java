@@ -8,6 +8,7 @@ import dao.Ciudadano;
 
 public class MainPruebas {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -19,8 +20,8 @@ public class MainPruebas {
 		List<Ciudadano> cius = new ArrayList<Ciudadano>();
 		cius.add(a);
 		cius.add(b);
-		BBDD bbdd = new BBDD();
-		bbdd.insertarCiudadano(cius);
+		//BBDD bbdd = new BBDD();
+		BBDD.insertarCiudadano(cius);
 	}
 
 }

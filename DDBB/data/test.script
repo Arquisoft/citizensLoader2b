@@ -44,5 +44,5 @@ GRANT DBA TO SA
 SET SCHEMA SYSTEM_LOBS
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
-INSERT INTO CIUDADANO VALUES('Pepe','pepin pepon','pepesemail@gmail.com','1911-09-13','12312312B','Calle Uria Gijon','Mozambique')
-INSERT INTO CIUDADANO VALUES('Nacho','Martin Franco','miemail@gmail.com','1911-08-16','12312312A','Calle Uria Oviedo','Senegal')
+INSERT INTO CIUDADANO VALUES('Pepe','pepin pepon','pepesemail@gmail.com','1911-09-13','12312312B','Calle Uria Gijon','Mozambique',NULL)
+INSERT INTO CIUDADANO VALUES('Nacho','Martin Franco','miemail@gmail.com','1911-08-16','12312312A','Calle Uria Oviedo','Senegal',NULL)
