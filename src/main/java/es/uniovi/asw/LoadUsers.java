@@ -88,7 +88,7 @@ public class LoadUsers {
 	 * 
 	 * @return password
 	 */
-	public static String crearPassword() {
+	public static void crearPassword(Ciudadano ciudadano) {
 		String password="";
 		char[] minusculas = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		char[] mayusculas = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
@@ -117,6 +117,6 @@ public class LoadUsers {
 		pos = random.nextInt(simbolos.length);
 		password += simbolos[pos];
 		
-		return password;
+		ciudadano.setPassword(password);
 	}
 }
