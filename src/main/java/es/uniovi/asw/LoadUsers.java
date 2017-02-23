@@ -78,56 +78,94 @@ public class LoadUsers {
 
 	private int sacarMes(String mesS) {
 		int mes = 0;
-		switch(mesS){
-			case "ene":
-				mes =1;
-				break;
-				
-			case "feb":
-				mes =2;
-				break;
-				
-			case "mar":
-				mes =3;
-				break;
-				
-			case "abr":
-				mes =4;
-				break;
-				
-			case "may":
-				mes =5;
-				break;
-				
-			case "jun":
-				mes =6;
-				break;
-				
-			case "jul":
-				mes =7;
-				break;
-				
-			case "ago":
-				mes =8;
-				break;
-				
-			case "sep":
-				mes =9;
-				break;
-				
-			case "oct":
-				mes= 10;
-				break;
-				
-			case "nov":
-				mes =11;
-				break;
-				
-			case "dic":
-				mes =12;
-				break;
-			
+		
+		if(mesS.equals("ene")){
+			mes=1;
 		}
+		if(mesS.equals("feb")){
+			mes=2;
+		}
+		if(mesS.equals("mar")){
+			mes=3;
+		}
+		if(mesS.equals("abr")){
+			mes=4;
+		}
+		if(mesS.equals("may")){
+			mes=5;
+		}
+		if(mesS.equals("jun")){
+			mes=6;
+		}
+		if(mesS.equals("jul")){
+			mes=7;
+		}
+		if(mesS.equals("ago")){
+			mes=8;
+		}
+		if(mesS.equals("sep")){
+			mes=9;
+		}
+		if(mesS.equals("oct")){
+			mes=10;
+		}
+		if(mesS.equals("nov")){
+			mes=11;
+		}
+		if(mesS.equals("dic")){
+			mes=12;
+		}
+//		
+//		switch(mesS){
+//			case "ene":
+//				mes =1;
+//				break;
+//				
+//			case "feb":
+//				mes =2;
+//				break;
+//				
+//			case "mar":
+//				mes =3;
+//				break;
+//				
+//			case "abr":
+//				mes =4;
+//				break;
+//				
+//			case "may":
+//				mes =5;
+//				break;
+//				
+//			case "jun":
+//				mes =6;
+//				break;
+//				
+//			case "jul":
+//				mes =7;
+//				break;
+//				
+//			case "ago":
+//				mes =8;
+//				break;
+//				
+//			case "sep":
+//				mes =9;
+//				break;
+//				
+//			case "oct":
+//				mes= 10;
+//				break;
+//				
+//			case "nov":
+//				mes =11;
+//				break;
+//				
+//			case "dic":
+//				mes =12;
+//				break;
+//			
+//		}
 		return mes;
 	}
 }
