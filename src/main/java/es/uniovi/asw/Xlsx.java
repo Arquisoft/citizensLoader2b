@@ -42,6 +42,8 @@ public class Xlsx implements Formatos {
 				Ciudadano ciudadano = new Ciudadano(aux.get(0).toString(), aux.get(1).toString(), aux.get(2).toString(),
 						aux.get(4).toString(), aux.get(5).toString(), aux.get(6).toString(), nacimiento);
 
+				ciudadano.crearPassword();
+				CrearCorreo.mandarCorreo(ciudadano);
 				ciudadanos.add(ciudadano);
 			}
 

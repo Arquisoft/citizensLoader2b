@@ -92,5 +92,5 @@ public class AplicationTest {
 		assertNotNull(BBDD.obtenerCiudadano("19160962F"));
 		assertNotNull(BBDD.obtenerCiudadano("09940449X"));
 	}
-
+	
 }

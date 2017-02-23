@@ -1,18 +1,12 @@
 package dao;
 
 import java.sql.Date;
+import java.util.Random;
 
 public class Ciudadano {
 
 	private String nombre, apellidos, email, direccion, nacionalidad, dni, password;
 	private Date fecha_nacimiento;
-
-	/*
-	 * AÑADIR NORMAS DE FORMATO EJ: DNI DEBE TENER 8 NUMEROS + LETRA
-	 * 
-	 * 
-	 * 
-	 */
 
 	public Ciudadano(String nombre, String apellidos, String email, String direccion, String nacionalidad, String dni,
 			Date fecha_nacimiento) {
@@ -96,4 +90,36 @@ public class Ciudadano {
 				+ ", fecha_nacimiento=" + fecha_nacimiento + "]";
 	}
 
+	/**
+	 * Metodo para crear la password de forma aleatoria.
+	 */
+	public void crearPassword() {
+		password = "";
+		char[] minusculas = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		char[] mayusculas = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
+		char[] numeros = "0123456789".toCharArray();
+		char[] simbolos = "'¿?*+-$%".toCharArray();
+		
+		// Tiene una letra mayuscula
+		Random random = new Random();
+		int pos = random.nextInt(mayusculas.length);
+		password += mayusculas[pos];
+		
+		// Tiene 5 letras minusculas
+		for (int i = 0; i < 5; i++) {
+			random = new Random();
+			pos = random.nextInt(minusculas.length);
+			password += minusculas[pos];
+		}
+		
+		// Tiene un numero
+		random = new Random();
+		pos = random.nextInt(numeros.length);
+		password += numeros[pos];
+		
+		// Tiene un simbolo especial 
+		random = new Random();
+		pos = random.nextInt(simbolos.length);
+		password += simbolos[pos];
+	}
 }

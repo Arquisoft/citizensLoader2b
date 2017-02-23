@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import dao.Ciudadano;
 
 public class Leer {
+	
 	public static ArrayList<Ciudadano> Ciudadanos(ArrayList<Ciudadano> ciudadanos, String ruta){
 		String[] subcadenas = ruta.split("\\.");
 		String extension = subcadenas[subcadenas.length-1];

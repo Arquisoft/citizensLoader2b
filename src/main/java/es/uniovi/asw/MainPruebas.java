@@ -28,8 +28,8 @@ public class MainPruebas {
 		// //BBDD bbdd = new BBDD();
 		// BBDD.insertarCiudadano(cius);
 
-		AddUsuario cargarUsuarios = new AddUsuario();
-		cargarUsuarios.execute();
+//		AddUsuario cargarUsuarios = new AddUsuario();
+//		cargarUsuarios.execute();
 
 		System.out.print("Inserte ruta:");
 		Scanner scanner = new Scanner(System.in);
