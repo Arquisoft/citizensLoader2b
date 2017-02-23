@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -23,7 +24,13 @@ import dao.Ciudadano;
 public class LoadUsers {
 
 //	@SuppressWarnings("deprecation")
-	public static List<Ciudadano> pruebaUsuarios(String ruta) {
+	/**
+	 * Metodo que carga el fichero y devuelve una lista de ciudadanos.
+	 * 
+	 * @param ruta
+	 * @return
+	 */
+	public static List<Ciudadano> cargarFichero(String ruta) {
 		List<Ciudadano> participants = new ArrayList<Ciudadano>();
 		try {
 			FileInputStream file = new FileInputStream(new File(ruta));
@@ -76,96 +83,40 @@ public class LoadUsers {
 		return participants;
 	}
 
-//	private static int sacarMes(String mesS) {
-//		int mes = 0;
-//		
-//		if(mesS.equals("ene")){
-//			mes=1;
-//		}
-//		if(mesS.equals("feb")){
-//			mes=2;
-//		}
-//		if(mesS.equals("mar")){
-//			mes=3;
-//		}
-//		if(mesS.equals("abr")){
-//			mes=4;
-//		}
-//		if(mesS.equals("may")){
-//			mes=5;
-//		}
-//		if(mesS.equals("jun")){
-//			mes=6;
-//		}
-//		if(mesS.equals("jul")){
-//			mes=7;
-//		}
-//		if(mesS.equals("ago")){
-//			mes=8;
-//		}
-//		if(mesS.equals("sep")){
-//			mes=9;
-//		}
-//		if(mesS.equals("oct")){
-//			mes=10;
-//		}
-//		if(mesS.equals("nov")){
-//			mes=11;
-//		}
-//		if(mesS.equals("dic")){
-//			mes=12;
-//		}
-//		
-//		switch(mesS){
-//			case "ene":
-//				mes =1;
-//				break;
-//				
-//			case "feb":
-//				mes =2;
-//				break;
-//				
-//			case "mar":
-//				mes =3;
-//				break;
-//				
-//			case "abr":
-//				mes =4;
-//				break;
-//				
-//			case "may":
-//				mes =5;
-//				break;
-//				
-//			case "jun":
-//				mes =6;
-//				break;
-//				
-//			case "jul":
-//				mes =7;
-//				break;
-//				
-//			case "ago":
-//				mes =8;
-//				break;
-//				
-//			case "sep":
-//				mes =9;
-//				break;
-//				
-//			case "oct":
-//				mes= 10;
-//				break;
-//				
-//			case "nov":
-//				mes =11;
-//				break;
-//				
-//			case "dic":
-//				mes =12;
-//				break;
-//			
-//		}
-//		return mes;
-//	}
+	/**
+	 * Metodo para crear la password de forma aleatoria.
+	 * 
+	 * @return password
+	 */
+	public static String crearPassword() {
+		String password="";
+		char[] minusculas = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		char[] mayusculas = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
+		char[] numeros = "0123456789".toCharArray();
+		char[] simbolos = "'¿?*+-$%".toCharArray();
+		
+		// Tiene una letra mayuscula
+		Random random = new Random();
+		int pos = random.nextInt(mayusculas.length);
+		password += mayusculas[pos];
+		
+		// Tiene 5 letras minusculas
+		for (int i = 0; i < 5; i++) {
+			random = new Random();
+			pos = random.nextInt(minusculas.length);
+			password += minusculas[pos];
+		}
+		
+		// Tiene un numero
+		random = new Random();
+		pos = random.nextInt(numeros.length);
+		password += numeros[pos];
+		
+		// Tiene un simbolo especial 
+		random = new Random();
+		pos = random.nextInt(simbolos.length);
+		password += simbolos[pos];
+		
+		return password;
+	}
 }

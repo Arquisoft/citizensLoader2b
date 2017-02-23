@@ -1,9 +1,10 @@
 package es.uniovi.asw;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.sql.Date;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.junit.Test;
 import dao.Ciudadano;
 
 public class AplicationTest {
+	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void addCiudadanoTest() {
@@ -49,18 +51,12 @@ public class AplicationTest {
 		BBDD.eliminarCiudadano("564613I");
 		cBD = BBDD.obtenerCiudadano("564613I");
 		assertNull(cBD);
-		
-		
 	}
 	
 	@Test
 	public void testCargarCSV(){
-		LoadUsers l = new LoadUsers();
-		// leemos el fichero
-		l.pruebaUsuarios("./src/test/java/es/uniovi/asw/test.xlsx");
-		
-		// cargamos la lista de  ciudadanos
-		List<Ciudadano> ciudadanos =l.pruebaUsuarios("./src/test/java/es/uniovi/asw/test.xlsx");
+		// leemos  y cargamos el fichero
+		List<Ciudadano> ciudadanos = LoadUsers.cargarFichero("./src/test/java/es/uniovi/asw/test.xlsx");
 		
 		// probamos con el primer ciudadano
 		Ciudadano c = ciudadanos.get(0);
