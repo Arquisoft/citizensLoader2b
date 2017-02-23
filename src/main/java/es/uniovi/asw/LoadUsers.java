@@ -23,7 +23,7 @@ import dao.Ciudadano;
 public class LoadUsers {
 
 	@SuppressWarnings("deprecation")
-	public List<Ciudadano> pruebaUsuarios(String ruta) {
+	public static List<Ciudadano> pruebaUsuarios(String ruta) {
 		List<Ciudadano> participants = new ArrayList<Ciudadano>();
 		try {
 			FileInputStream file = new FileInputStream(new File(ruta));
@@ -76,7 +76,7 @@ public class LoadUsers {
 		return participants;
 	}
 
-	private int sacarMes(String mesS) {
+	private static int sacarMes(String mesS) {
 		int mes = 0;
 		
 		if(mesS.equals("ene")){

@@ -91,6 +91,10 @@ public class AplicationTest {
 		assertEquals("Av. De la Constitución 8", c.getDireccion());
 		assertEquals("Español", c.getNacionalidad());
 		assertEquals("09940449X", c.getDni());
+		
+		assertNotNull(BBDD.obtenerCiudadano("90500084Y"));
+		assertNotNull(BBDD.obtenerCiudadano("19160962F"));
+		assertNotNull(BBDD.obtenerCiudadano("09940449X"));
 	}
 
 }
