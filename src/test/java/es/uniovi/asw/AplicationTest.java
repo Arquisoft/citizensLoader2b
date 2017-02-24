@@ -14,12 +14,18 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import dao.Ciudadano;
 
 public class AplicationTest {
 
+	@Before
+	public void before() {
+		BBDD.eliminarCiudadanos();
+	}
+	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void addCiudadanoTest() {
