@@ -41,8 +41,6 @@ public class Xlsx implements Formatos {
 
 				Ciudadano ciudadano = new Ciudadano(aux.get(0).toString(), aux.get(1).toString(), aux.get(2).toString(),
 						aux.get(4).toString(), aux.get(5).toString(), aux.get(6).toString(), nacimiento);
-
-				addUsuario.execute();
 				
 				ciudadanos.add(ciudadano);
 			}
@@ -50,8 +48,7 @@ public class Xlsx implements Formatos {
 			file.close();
 			workbook.close();
 		} catch (Exception e) {
-			System.err.println("Error al leer del excel");
-			e.printStackTrace();
+			System.err.println("Error al leer del excel xlsx");
 		}
 		return ciudadanos;
 	}

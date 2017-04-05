@@ -18,21 +18,20 @@ public class BBDD {
 	 * 
 	 * @return objeto conexion
 	 */
-	@SuppressWarnings("finally")
 	public static Connection crearConexion() {
 		Connection conexion = null;
 		try {
 			DriverManager.registerDriver(new JDBCDriver());
-			String url = "jdbc:hsqldb:file:./DDBB/data/test";
-			// String url = "jdbc:hsqldb:hsql://localhost/";
+			//String url = "jdbc:hsqldb:file:./DDBB/data/test";
+			//Descomentar para probar los test en local.
+			String url = "jdbc:hsqldb:hsql://localhost/";
 			String user = "SA";
 			String pass = "";
 			conexion = DriverManager.getConnection(url, user, pass);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			return conexion;
 		}
+		return conexion;
 	}
 
 	/**
