@@ -5,11 +5,17 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e680327c40a44a6b8378a8171066e341)](https://www.codacy.com/app/jelabra/citizensLoader2b?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/citizensLoader0&utm_campaign=badger)
 [![codecov](https://codecov.io/gh/Arquisoft/citizensLoader2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/citizensLoader2b)
 
+
 Citizens Loader module:
+
 cd citizensLoader2b
+
 Execute DDBB\data\startup.bat
+
 Execute mvn package
-Execute java -jar target\citizensLoader0-0.0.1-jar-with-dependencies.jar
+
+Execute java -jar target\citizensLoader2b-0.0.1-jar-with-dependencies.jar
+
 
 # Authors
 
